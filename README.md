@@ -3,7 +3,7 @@
  
 Replace 'TOKEN_ID' with a token id in .env_sample
 
-####Commands####
+**Commands**
 1. Play - Plays the audio of a youtube video link in VC
 2. Skip - Skips the item in queue
 3. Stop - Stops the video currently playing in VC
