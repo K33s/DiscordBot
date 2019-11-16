@@ -1,2 +1,7 @@
 .env
 node_modules/
+DiscordBot.code-workspace
+run.bat
+audio/
+images/
+Logs/
