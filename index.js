@@ -14,10 +14,10 @@ function log(message){
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate() + ' '
         + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();;
-    let text = date + ' | ' + message.author.tag + " > " + message;
+    let text = date + ' | ' + message.author.tag + " > " + message + "\n";
     let fileName = './Logs/' + message.guild.name + '_' + message.guild.id + '.txt';
         
-    fs.writeFile(fileName, text, (err) => {  
+    fs.appendFile(fileName, text, (err) => {  
         if (err) throw err;
         else console.log("Wrote to " + fileName + '->' + text);
     }) 
@@ -36,6 +36,10 @@ function play(connection, message) {
         if (server.queue[0]) play(connection, message);
         else connection.disconnect();
     });
+}
+
+function bracket(connection, message){
+
 }
 
 
@@ -117,7 +121,9 @@ bot.on('message', message => {
             .setThumbnail(bot.user.avatarURL)
             .setColor(0x0900FF)
             .setDescription('Use & followed by the commands to make requests.')
-            .addField('play', "Use play followed by a youtube link to playthe video in vc")
+            .addField('play', "Use play followed by a youtube link to play the video in vc")
+            .addField('pause', "Pauses the track currently playing")
+            .addField('resume', "Resumes a paused track")
             .addField('skip', "Skip the yt video playing in vc")
             .addField('stop', "Stop the yt vid playing in vc")
             .addField('ping')
@@ -165,16 +171,16 @@ bot.on('message', message => {
             if(server.dispatcher) server.dispatcher.end();
             break;
 
-        /* case 'pause':
+        case 'pause':
             var server = servers[message.guild.id];
-            message.reply("Use !resume to continue playback or !stop to end playback");
+            message.reply("Use &resume to continue playback or !stop to end playback");
             server.dispatcher.pause(); // Pause the stream
             break;
 
         case 'resume':
             var server = servers[message.guild.id];
             server.dispatcher.resume(); // Carry on playing
-            break; */
+            break;
 
         // completely stop playback and disconnect
         case 'stop': 
