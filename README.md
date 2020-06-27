@@ -1,7 +1,6 @@
 # DiscordBot
- *In development*
  
-Replace 'TOKEN_ID' with a token id in .env_sample
+Replace 'TOKEN_ID' with a token id in .env_sample if replicating :)
 
 **Commands**
 * Play - Plays the audio of a youtube video link in VC
